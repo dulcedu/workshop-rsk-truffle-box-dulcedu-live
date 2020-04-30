@@ -42,6 +42,17 @@ module.exports = {
     },
     develop: {
       port: 8545
+    },
+    testnet: {
+      provider: () => new HDWalletProvider(
+        mnemonic,
+        'https://public-node.testnet.rsk.co/1.3.0/',
+      ),
+      network_id: 31,
+      gasPrice: gasPriceTestnet + 1e6,
+      networkCheckTimeout: 1e9
     }
+    
   }
+
 };
