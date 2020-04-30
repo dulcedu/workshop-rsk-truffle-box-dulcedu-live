@@ -24,8 +24,21 @@ contract('Adoption', (accounts) => {
           'adoption transaction failed',
         );
       });
+      it('remembers adopter account', async () => {
+        inst = await Adoption.deployed();
     
+        const adopterAccount = accounts[5];
+        const expectedPetId = new BN(8);
+        const returnedAccount = await inst.adopters(
+          expectedPetId,
+        );
     
-
+        assert.equal(
+          returnedAccount,
+          adopterAccount,
+          'returned adopter account mismatch',
+        );
+      });
+      
 });
 
